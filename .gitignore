@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+DropHeads_clone/
+HeadDrop-Premium/
+target/
+**/target/
+*.iml
+**/*.iml
+*.log
+**/dependency-reduced-pom.xml
