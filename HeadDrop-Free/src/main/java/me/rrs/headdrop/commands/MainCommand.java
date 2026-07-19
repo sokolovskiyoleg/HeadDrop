@@ -37,6 +37,9 @@ public class MainCommand implements CommandExecutor, TabCompleter {
                 case "debug":
                     generateDebugFile(sender);
                     break;
+                case "gui":
+                    openGUI(sender);
+                    break;
             }
         }
         return true;
@@ -142,11 +145,23 @@ public class MainCommand implements CommandExecutor, TabCompleter {
         }
     }
 
+    private void openGUI(CommandSender sender) {
+        if (sender instanceof Player player) {
+            if (player.hasPermission("headdrop.gui.view")) {
+                HeadDrop.getInstance().openHeadGUI(player);
+            } else {
+                lang.noPerm(player);
+            }
+        } else {
+            lang.pcmd();
+        }
+    }
+
     @Override
     public List<String> onTabComplete(CommandSender sender, Command cmd, String alias, String[] args) {
 
         if (cmd.getName().equals("headdrop") && args.length ==1){
-            return Arrays.asList("help", "reload", "leaderboard");
+            return Arrays.asList("help", "reload", "leaderboard", "gui");
         }
         return Collections.emptyList();
     }
