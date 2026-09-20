@@ -160,6 +160,11 @@ public class HeadDrop extends JavaPlugin {
 
     // region Update Checking
     private void startUpdateChecker() {
+        if (!config.getBoolean("Config.Check-For-Updates", true)) {
+            logInfo("Update notifications are disabled in config.");
+            return;
+        }
+
         if (isFolia()) {
             checkForUpdates();
             return;
